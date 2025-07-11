@@ -38,7 +38,7 @@ function hideHelp() {
 // Toggle Background
 document.getElementById("btn_pfp").addEventListener('click', toggleBg);
 let container = document.getElementById("container");
-let currentBg = 1;
+let currentBg = 0;
 
 function toggleBg() {
     document.getElementById("btn_pfp").classList.remove("flash");

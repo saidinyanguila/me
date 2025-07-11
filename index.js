@@ -27,11 +27,22 @@ document.getElementById("pop-up-close").addEventListener('click', hideHelp);
 
 function showHelp() {
     document.getElementById("pop-up").classList.add("show");
-    document.getElementById("container").style.overflowY = "hidden";
+    document.getElementById("bdy").style.overflowY = "hidden";
 }
 
 function hideHelp() {
     document.getElementById("pop-up").classList.remove("show");
-    document.getElementById("container").style.overflowY = "scroll";
+    document.getElementById("bdy").style.overflowY = "scroll";
 }
 
+// Toggle Background
+document.getElementById("btn_pfp").addEventListener('click', toggleBg);
+let container = document.getElementById("container");
+let currentBg = 0;
+
+function toggleBg() {
+    document.getElementById("btn_pfp").classList.remove("flash");
+
+    if (currentBg == 0) { container.style.backgroundImage = " url('Images/IMG_3844.jpg')"; currentBg = 1; }
+    else if (currentBg == 1) { container.style.backgroundImage = " url('Images/IMG_3839.jpg')"; currentBg = 0; }
+}

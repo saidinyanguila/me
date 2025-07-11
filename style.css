@@ -23,6 +23,7 @@ body {
     background-image: url("Images/IMG_3844.jpg");
     background-size: cover;
     background-position: center 5px;
+    transition: .5s;
 }
 .bg-filter {
     position: absolute;
@@ -30,6 +31,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
 }
 .content {
@@ -70,8 +72,10 @@ body {
     display: block;
     margin: 0 auto 15px auto;
     border: 3px solid whitesmoke;
-    animation: fade 1s ease-in-out infinite;
+    transition: .5s;
 }
+.details .profile-img:active { border: 3px solid rgba(245, 245, 245, 0.15); }
+.flash { animation: fade 1s ease-in-out infinite; }
 .details .profile-img img {
     width: 100%;
     height: 100%;
@@ -81,6 +85,7 @@ body {
     border: 4px solid transparent;
     display: block;
     margin: auto;
+    pointer-events: none;
 }
 .creds {
     text-align: center;

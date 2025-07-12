@@ -1,5 +1,5 @@
 const target_text = document.getElementById("target_text");
-const phrases = ["Front-End Developer", "HTML, CSS and JavaScript"];
+const phrases = ["Indie Game Developer", "Front-end Developer", "College Student"];
 
 var currentPhrase = 0;
 var currentChar = 0;

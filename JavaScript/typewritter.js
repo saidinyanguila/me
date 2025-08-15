@@ -1,5 +1,5 @@
 const target_text = document.getElementById("target_text");
-const phrases = ["Indie Game Developer", "Front-end Developer", "College Student"];
+const phrases = ["Follow Me", "Subscribe"];
 
 var currentPhrase = 0;
 var currentChar = 0;
@@ -39,3 +39,4 @@ function UpdateText() {
 }
 
 UpdateText();
+

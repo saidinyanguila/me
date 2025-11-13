@@ -21,36 +21,24 @@ closeShareLink.addEventListener('click', function() {
 const copyBtn = document.getElementById('share_copy');
 const copyData = {
     title: document.title,
-    text: 'Check this out 👇',
+    text: 'Check out Saidi\s website',
     url: window.location.href
 };
 
 copyBtn.addEventListener('click', async () => {
-    if (navigator.share) {
-        // Native share available (mobile, etc.)
-        try {
-            await navigator.share(copyData);
-        } 
-        catch (err) {
-            console.error('Share failed:', err);
-        }
+    try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
     } 
-    else {
-        // Fallback to copy link
-        try {
-            await navigator.clipboard.writeText(window.location.href);
-            alert('Link copied to clipboard!');
-        } 
-        catch (err) {
-            alert('Could not copy link.');
-        }
+    catch (err) {
+        alert('Could not copy link.');
     }
 });
 
 // Share
 const shareData = {
-    title: 'Check this out!',
-    text: 'Found something cool on this website 👇',
+    title: 'Saidi',
+    text: 'Check out Saidi\'s website',
     url: window.location.href
 };
 
@@ -62,4 +50,5 @@ document.getElementById('share-more').addEventListener('click', async () => {
     catch (err) {
         console.error('Error sharing:', err);
     }
+
 });

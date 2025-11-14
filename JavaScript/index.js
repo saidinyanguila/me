@@ -2,25 +2,25 @@ const links = [
     {
         platform: "Instagram",
         name: "saidi.wav",
-        img: "img/IMG_3844.jpg",
+        img: "img/profile_instagram.jpg",
         url: "https://www.instagram.com/saidi.wav"
     },
     {
         platform: "Youtube",
         name: "Saidi",
-        img: "img/IMG_3844.jpg",
+        img: "img/profile_youtube.jpg",
         url: "https://www.youtube.com/channel/UCFbbdrpNYuxL40asEkhGblQ"
     },
     {
         platform: "TikTok",
         name: "𝙎♤𝙄𝘿𝙄",
-        img: "img/IMG_3844.jpg",
+        img: "img/profile_tiktok.jpg",
         url: "https://www.tiktok.com/@24llammas"
     },
     {
         platform: "PlayStation",
         name: "jxst_stxtic",
-        img: "img/IMG_3844.jpg",
+        img: "img/profile_psn.png",
         url: "https://profile.playstation.com/jxst_stxtic"
     }
 ]
@@ -80,6 +80,9 @@ closeShareLink.addEventListener('click', function() {
     body.style.overflow = "auto";
 });
 
+let copyData;
+let shareData;
+
 function shareItem(event, itemObj) {
     event.preventDefault();
     
@@ -93,29 +96,29 @@ function shareItem(event, itemObj) {
     
     shareLinkPage.classList.add("active");
     body.style.overflow = "hidden";
+    
+    // Copy & Share
+    copyData = itemObj.url;
+    shareData = {
+        title: `${itemObj.name} is on ${itemObj.platform}`,
+        text: `Check out ${itemObj.name} on ${itemObj.platform}`,
+        url: itemObj.url
+    };
 }
 
-// Share Page 
-const sharePageData = {
-    title: 'Check this out!',
-    text: 'Saidi\'s Website',
-    url: window.location.href
-};
-document.getElementById('shareBtn').addEventListener('click', async () => {
+// #region Copy link
+document.getElementById('share_copy').addEventListener('click', async () => {
     try {
-        await navigator.share(shareData);
+        await navigator.clipboard.writeText(copyData);
+        flash_message('Copied to clipboard');
     } 
     catch (err) {
-        console.error('Error sharing:', err);
+        flash_message('Could not copy.');
     }
 });
+// #endregion
 
-// Share Link
-const shareData = {
-    title: 'Check this out!',
-    text: 'Found something cool on this website 👇',
-    url: window.location.href
-};
+// #region Share More
 document.getElementById('share-more').addEventListener('click', async () => {
     try {
         await navigator.share(shareData);
@@ -124,20 +127,19 @@ document.getElementById('share-more').addEventListener('click', async () => {
         console.error('Error sharing:', err);
     }
 });
+// #endregion
 
-// Copy link
-const copyData = {
-    title: document.title,
-    text: 'Check this out 👇',
-    url: window.location.href
-};
-document.getElementById('share_copy').addEventListener('click', async () => {
+// Share Page 
+document.getElementById('shareBtn').addEventListener('click', async () => {
     try {
-        await navigator.clipboard.writeText(window.location.href);
-        flash_message('Copied to clipboard');
+        await navigator.share({
+            title: 'Check this out!',
+            text: 'Saidi\'s Website',
+            url: window.location.href
+        });
     } 
     catch (err) {
-        flash_message('Could not copy.');
+        console.error('Error sharing:', err);
     }
 });
 

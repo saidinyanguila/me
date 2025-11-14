@@ -26,7 +26,9 @@ const links = [
 ]
 
 const linksParent = document.getElementById("links-container");
+const linkIcons = document.getElementById("link-icons");
 let index = 0;
+
 links.forEach(link => {
     let a = document.createElement("a");
     a.setAttribute("href", link.url)
@@ -61,6 +63,11 @@ links.forEach(link => {
     });
 
     linksParent.appendChild(a);
+
+    let li = document.createElement("li");
+    li.innerHTML = `<a href="${link.url}"><i class="fa-brands fa-${link.platform.toLowerCase()}"></i></a>`;
+    linkIcons.appendChild(li);
+
     index++;
 });
 
@@ -127,9 +134,29 @@ const copyData = {
 document.getElementById('share_copy').addEventListener('click', async () => {
     try {
         await navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
+        flash_message('Copied to clipboard');
     } 
     catch (err) {
-        alert('Could not copy link.');
+        flash_message('Could not copy.');
     }
 });
+
+// Message 
+function flash_message(text) {
+    let msg = document.createElement("div");
+    msg.innerHTML = `<span>${text}</span>`;
+    msg.className = "message-item";
+    document.getElementById("bdy").appendChild(msg);
+
+    setTimeout(function() {
+        msg.classList.add("show");
+    }, 100);
+
+    setTimeout(function() {
+        msg.classList.remove("show");
+    }, 3000);
+
+    setTimeout(function() {
+        msg.remove();
+    }, 5000);
+}

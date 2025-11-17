@@ -15,7 +15,7 @@ const links = [
         platform: "TikTok",
         name: "𝙎♤𝙄𝘿𝙄",
         img: "img/profile_tiktok.jpg",
-        url: "https://www.tiktok.com/@24llammas"
+        url: "https://www.tiktok.com/@saidi.wav"
     },
     {
         platform: "PlayStation",
@@ -162,3 +162,4 @@ function flash_message(text) {
         msg.remove();
     }, 5000);
 }
+
